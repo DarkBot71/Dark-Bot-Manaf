@@ -37,7 +37,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
  if (["remove", "rm"].includes(args[0])) {
  const parts = query.replace(/^(remove|rm)\s*/, "").split(" - ");
  if (parts.length < 2)
- return api.sendMessage("❌ | Use: remove [Question] - [Reply]", event.threadID, event.messageID);
+ return api.sendMessage("✔️ | Use: remove [Question] - [Reply]", event.threadID, event.messageID);
 
  const [ask, ans] = parts;
  const res = await axios.get(`${simsim}/delete?ask=${encodeURIComponent(ask)}&ans=${encodeURIComponent(ans)}`);
@@ -60,7 +60,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
  if (args[0] === "edit") {
  const parts = query.replace("edit ", "").split(" - ");
  if (parts.length < 3)
- return api.sendMessage("❌ | Use: edit [Question] - [OldReply] - [NewReply]", event.threadID, event.messageID);
+ return api.sendMessage("✔️ | Use: edit [Question] - [OldReply] - [NewReply]", event.threadID, event.messageID);
 
  const [ask, oldReply, newReply] = parts;
  const res = await axios.get(`${simsim}/edit?ask=${encodeURIComponent(ask)}&old=${encodeURIComponent(oldReply)}&new=${encodeURIComponent(newReply)}`);
@@ -70,7 +70,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
  if (args[0] === "teach") {
  const parts = query.replace("teach ", "").split(" - ");
  if (parts.length < 2)
- return api.sendMessage("❌ | Use: teach [Question] - [Reply]", event.threadID, event.messageID);
+ return api.sendMessage("✔️ | Use: teach [Question] - [Reply]", event.threadID, event.messageID);
 
  const [ask, ans] = parts;
  const res = await axios.get(`${simsim}/teach?ask=${encodeURIComponent(ask)}&ans=${encodeURIComponent(ans)}&senderID=${uid}&senderName=${encodeURIComponent(senderName)}`);
@@ -97,7 +97,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
  }
  } catch (err) {
  console.error(err);
- return api.sendMessage(`❌ | Error in baby command: ${err.message}`, event.threadID, event.messageID);
+ return api.sendMessage(`✔️ | Error in baby command: ${err.message}`, event.threadID, event.messageID);
  }
 };
 
@@ -127,7 +127,7 @@ module.exports.handleReply = async function ({ api, event, Users, handleReply })
  }
  } catch (err) {
  console.error(err);
- return api.sendMessage(`❌ | Error in handleReply: ${err.message}`, event.threadID, event.messageID);
+ return api.sendMessage(`✔️ | Error in handleReply: ${err.message}`, event.threadID, event.messageID);
  }
 };
 
